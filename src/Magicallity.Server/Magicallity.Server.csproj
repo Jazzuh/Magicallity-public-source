@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net452</TargetFramework>
+    <DebugType>portable</DebugType>
+    <TargetName>$(AssemblyName).net</TargetName>
+    <DefineConstants>SERVER;ONESYNC</DefineConstants>
+    <LangVersion>7.3</LangVersion>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CitizenFX.Core.Server" Version="1.0.1356" />	
+	  <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <Reference Include="Microsoft.CSharp" />
+	
+	  <Compile Include="../Magicallity.Shared/**/*.cs">
+		  <Link>Shared\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="external\**" />
+    <EmbeddedResource Remove="external\**" />
+    <None Remove="external\**" />
+  </ItemGroup>
+
+</Project>

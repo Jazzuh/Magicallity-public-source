@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net452</TargetFramework>
+    <DebugType>embedded</DebugType>
+    <TargetName>$(AssemblyName).net</TargetName>
+    <DefineConstants>CLIENT</DefineConstants>
+	<LangVersion>7.3</LangVersion>
+	<Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CitizenFX.Core.Client" Version="1.0.1356" />
+
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" ExcludeAssets="Compile" GeneratePathProperty="true" />
+    <Reference Include="Newtonsoft.Json">
+		<HintPath>$(PkgNewtonsoft_Json)\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Microsoft.CSharp" />
+
+    <Reference Include="uiFramework.net">
+      <HintPath>external\uiFramework.net.dll</HintPath>
+    </Reference>
+	
+	<Compile Include="../Magicallity.Shared/**/*.cs">
+		<Link>Shared\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="external\**" />
+    <EmbeddedResource Remove="external\**" />
+    <None Remove="external\**" />
+  </ItemGroup>
+
+</Project>
